@@ -13,7 +13,7 @@ public class Deck {
 		haveused = new ArrayList<Card>();
 		openCard = new ArrayList<Card>();
 		for (int k = 0; k < nDeck; k++) {
-			for (int suit = 1; suit < 4; suit++) {
+			for (int suit = 1; suit < 5; suit++) {
 				for (int num = 1; num < 14; num++) {
 					Card card;
 					switch (suit) {
@@ -48,36 +48,36 @@ public class Deck {
 		Random rnd = new Random();
 		int m;
 
-		while(!cards.isEmpty()) {
+		while (!cards.isEmpty()) {
 			haveused.add(cards.get(0));
 			cards.remove(cards.get(0));
 		}
 
-		while(!haveused.isEmpty()) {
+		while (!haveused.isEmpty()) {
 			m = rnd.nextInt(haveused.size());
 			cards.add(haveused.get(m));
 			haveused.remove(m);
 		}
 		nused = 0;
-		
+
 		openCard.clear();
 	}
 
 	public Card getOneCard(boolean isOpened) {
 		if (cards.isEmpty() == true)
 			shuffle();
-		
+
 		Card tmp = cards.get(0);
 		haveused.add(tmp);
 		cards.remove(tmp);
 		nused++;
-		if(isOpened)
+		if (isOpened)
 			openCard.add(tmp);
-		
+
 		return tmp;
 	}
-	
-	public ArrayList<Card> getOpenedCard(){
+
+	public ArrayList<Card> getOpenedCard() {
 		return openCard;
 	}
 
